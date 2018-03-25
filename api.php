@@ -1,27 +1,20 @@
 <?php
- 
-$strAccessToken = "<JlTAZvIGV5XmwFLezTAvI6gscguh/8076faOq4K4+7USnOCZKEJVGrWDT9Lphce2Bchr3EPDgg1MpVNepops6r+F6hf1SYEk3Hs3ddTR/TbvA/wMppKeDWJCWPza9YmtyrcCU79j2okYD3rS1ybbhQdB04t89/1O/w1cDnyilFU=>";
- 
+$strAccessToken = "JlTAZvIGV5XmwFLezTAvI6gscguh/8076faOq4K4+7USnOCZKEJVGrWDT9Lphce2Bchr3EPDgg1MpVNepops6r+F6hf1SYEk3Hs3ddTR/TbvA/wMppKeDWJCWPza9YmtyrcCU79j2okYD3rS1ybbhQdB04t89/1O/w1cDnyilFU=";
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
- 
 $strUrl = "https://api.line.me/v2/bot/message/reply";
- 
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
- 
- 
-$api_key="<7l94wcp-6Q84WtKmjM7vM99I19E7VAlt>";
-$url = 'https://mlab.com/databases/kampan/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://mlab.com/databases/kampan/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
+$api_key="41FEuTQ4Z0n06IeNqJVPsJ1FX37h_oVc";
+$url = 'https://api.mlab.com/api/1/databases/kampan/collections/linebot?apiKey='.$api_key.'';
+$json = file_get_contents('https://api.mlab.com/api/1/databases/kampan/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
- 
-if (strpos($_msg, 'สอนเป็ด') !== false) {
-  if (strpos($_msg, 'สอนเป็ด') !== false) {
-    $x_tra = str_replace("สอนเป็ด","", $_msg);
+if (strpos($_msg, 'สอนAD') !== false) {
+  if (strpos($_msg, 'สอนAD') !== false) {
+    $x_tra = str_replace("สอนAD","", $_msg);
     $pieces = explode("|", $x_tra);
     $_question=str_replace("[","",$pieces[0]);
     $_answer=str_replace("]","",$pieces[1]);
@@ -44,7 +37,7 @@ if (strpos($_msg, 'สอนเป็ด') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอน';
+    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอน RUNG AD น๊าน่ารักที่สุด';
   }
 }else{
   if($isData >0){
@@ -58,11 +51,9 @@ if (strpos($_msg, 'สอนเป็ด') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
+    $arrPostData['messages'][0]['text'] = 'ตะเองเค้าไม่รู้คำตอบอ่ะ ตัวเองสอนให้เค้าได้นะเพียงพิมพ์: สอน AD[คำถาม|คำตอบ]พิมพ์ให้ถูกต้องนะตัวเอง';
   }
 }
- 
- 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
 curl_setopt($channel, CURLOPT_HEADER, false);

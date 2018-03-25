@@ -13,9 +13,9 @@ $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
  
  
-$api_key="<MLAB APIKEY>";
-$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
+$api_key="<7l94wcp-6Q84WtKmjM7vM99I19E7VAlt>";
+$url = 'https://mlab.com/databases/kampan/collections/linebot?apiKey='.$api_key.'';
+$json = file_get_contents('https://mlab.com/databases/kampan/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
  
@@ -44,7 +44,7 @@ if (strpos($_msg, 'สอนเป็ด') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนเป็ด';
+    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอน';
   }
 }else{
   if($isData >0){

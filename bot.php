@@ -14,7 +14,7 @@ $_msg = $arrJson['events'][0]['message']['text'];
  
  
 $api_key="<7l94wcp-6Q84WtKmjM7vM99I19E7VAlt>";
-$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
+$url = 'https://mlab.com/databases/kampan/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://mlab.com/databases/kampan/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);

@@ -19,12 +19,12 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/kampan/collectio
 $data = json_decode($json);
 $isData=sizeof($data);
  
-if (strpos($_msg, 'สอนเป็ด') !== false) {
-  if (strpos($_msg, 'สอนเป็ด') !== false) {
-    $x_tra = str_replace("สอนเป็ด","", $_msg);
-    $pieces = explode("|", $x_tra);
-    $_question=str_replace("[","",$pieces[0]);
-    $_answer=str_replace("]","",$pieces[1]);
+if (strpos($_msg, 'สอนนิว') !== false) {
+  if (strpos($_msg, 'สอนนิว') !== false) {
+    $x_tra = str_replace("สอนนิว","", $_msg);
+    $pieces = explode("/", $x_tra);
+    $_question=str_replace("*","",$pieces[0]);
+    $_answer=str_replace("","",$pieces[1]);
     //Post New Data
     $newData = json_encode(
       array(
@@ -58,7 +58,7 @@ if (strpos($_msg, 'สอนเป็ด') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
+    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนนิว*คำถาม|คำตอบ';
   }
 }
  

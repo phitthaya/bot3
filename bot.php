@@ -23,7 +23,7 @@ if (strpos($_msg, 'สอนนิว') !== false) {
   if (strpos($_msg, 'สอนนิว') !== false) {
     $x_tra = str_replace("สอนนิว","", $_msg);
     $pieces = explode("/", $x_tra);
-    $_question=str_replace("*","",$pieces[0]);
+    $_question=str_replace("@","",$pieces[0]);
     $_answer=str_replace("","",$pieces[1]);
     //Post New Data
     $newData = json_encode(
@@ -58,7 +58,7 @@ if (strpos($_msg, 'สอนนิว') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนนิว*คำถาม|คำตอบ';
+    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนนิว@คำถาม/คำตอบ';
   }
 }
  
